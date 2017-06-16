@@ -6,20 +6,24 @@ import SignUpForm from './SignUpForm'
 import ClothingContainer from '../containers/ClothingContainer'
 import SingleView from './SingleView'
 import Faq from './Faq'
+import NotFound from './NotFound'
 import Footer from './Footer'
 
-import {HashRouter as Router, Route} from 'react-router-dom'
+import {HashRouter as Router, Route, Switch} from 'react-router-dom'
 
 const App = () =>
    (
    <Router>
       <div className='app'>
          <Header />
-         <Route path="*" component={Nav} />
-         <Route path="/signup" component={SignUpForm} />
-         <Route path="/clothing" component={ClothingContainer} />
-         <Route path="/singleview" component={SingleView} />
-         <Route path="/faq" component={Faq} />
+         <Route component={Nav} />
+         <Switch>
+           <Route path="/signup" component={SignUpForm} />
+           <Route path="/clothing" component={ClothingContainer} />
+           <Route path="/singleview" component={SingleView} />
+           <Route path="/faq" component={Faq} />
+           <Route component={NotFound} />
+         </Switch>
          <Footer />
       </div>
    </Router>
